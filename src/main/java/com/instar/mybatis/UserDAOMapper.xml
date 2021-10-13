@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserDAO">
+
+	
+	<insert id="join">
+		INSERT INTO INSTAR_USER (
+			ID,
+			EMAIL,
+			USERNAME,
+			NAME,
+			PASSWORD
+		) VALUES (
+			USER_ID_SEQ.nextval,
+			#{email },
+			#{username },
+			#{name },
+			#{password }
+		)
+	</insert>
+	
+	<select id="login" resultType="User">
+		SELECT * FROM INSTAR_USER WHERE USERNAME = #{username }
+	</select>
+
+	<select id="joinCheck" resultType="User">
+		SELECT * FROM INSTAR_USER WHERE USERNAME = #{username }
+	</select>
+	
+	<insert id="oauthJoin">
+		INSERT INTO INSTAR_USER (
+			ID,
+			EMAIL,
+			USERNAME,
+			NAME,
+			PASSWORD,
+			PROVIDER,
+			PROVIDER_ID
+		) VALUES (
+			USER_ID_SEQ.nextval,
+			#{email },
+			#{username },
+			#{name },
+			#{password },
+			#{provider },
+			#{providerId }
+		)
+	</insert>
+
+	
+</mapper>
